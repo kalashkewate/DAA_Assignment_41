@@ -248,4 +248,125 @@ public class EmergencyTrafficSystem {
         System.out.println("  System ready for continuous monitoring");
         System.out.println("*******************************************\n");
     }
+
 }
+
+
+
+#Output
+    
+    ***** SMART TRAFFIC MANAGEMENT SYSTEM *****
+    FOR EMERGENCY VEHICLES
+*******************************************
+
+Initial Traffic Conditions:
+
+========================================
+  EMERGENCY ROUTE CALCULATION
+========================================
+Ambulance Location: Central Square
+
+Distances to All Hospitals:
+----------------------------------------
+  City Hospital: 12 minutes
+  General Hospital: 10 minutes
+  Metro Hospital: 12 minutes <- NEAREST
+
+========================================
+  OPTIMAL ROUTE (SHORTEST TIME)
+========================================
+Destination: General Hospital
+Total Time: 10 minutes
+
+Route Navigation:
+----------------------------------------
+START: Central Square
+   |
+   V
+       Park Avenue
+   |
+   V
+       Market Junction
+   |
+   V
+END:   General Hospital (HOSPITAL)
+----------------------------------------
+
+
+========================================
+  REAL-TIME TRAFFIC UPDATE #1
+========================================
+
+>>> Traffic Updated: Road between Park Avenue and Market Junction now takes 8 minutes
+
+Recalculating route with updated conditions...
+
+========================================
+  EMERGENCY ROUTE CALCULATION
+========================================
+Ambulance Location: Central Square
+
+Distances to All Hospitals:
+----------------------------------------
+  City Hospital: 12 minutes
+  General Hospital: 13 minutes
+  Metro Hospital: 15 minutes <- NEAREST
+
+========================================
+  OPTIMAL ROUTE (SHORTEST TIME)
+========================================
+Destination: City Hospital
+Total Time: 12 minutes
+
+Route Navigation:
+----------------------------------------
+START: Central Square
+   |
+   V
+       Main Street
+   |
+   V
+END:   City Hospital (HOSPITAL)
+----------------------------------------
+
+
+========================================
+  REAL-TIME TRAFFIC UPDATE #2
+========================================
+
+>>> Traffic Updated: Road between Main Street and City Hospital now takes 3 minutes
+
+Recalculating route with updated conditions...
+
+========================================
+  EMERGENCY ROUTE CALCULATION
+========================================
+Ambulance Location: Central Square
+
+Distances to All Hospitals:
+----------------------------------------
+  City Hospital: 8 minutes
+  General Hospital: 13 minutes
+  Metro Hospital: 15 minutes <- NEAREST
+
+========================================
+  OPTIMAL ROUTE (SHORTEST TIME)
+========================================
+Destination: City Hospital
+Total Time: 8 minutes
+
+Route Navigation:
+----------------------------------------
+START: Central Square
+   |
+   V
+       Main Street
+   |
+   V
+END:   City Hospital (HOSPITAL)
+----------------------------------------
+
+
+*******************************************
+  System ready for continuous monitoring
+*******************************************
