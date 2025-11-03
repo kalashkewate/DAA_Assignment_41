@@ -140,3 +140,13 @@ public class SwiftCargo {
     }
 }
 
+#Output
+    optimal cost: 4.0
+optimal path: [0, 3, 4]
+
+after traffic update the Optimal cost: 7.5
+after traffic update the Optimal path: [0, 2, 4]
+
+Request 1 - cost: 7.5, path: [0, 2, 4]
+Request 2 - cost: 5.5, path: [1, 3, 5]
+
