@@ -90,3 +90,36 @@ public class UniversityTimetable {
     }
 }
 
+#Input
+    Enter number of courses 5
+Enter number of conflicts 4
+Enter conflict pairs 
+0 1
+1 2
+2 3
+3 4
+Do you want to input room capacities?Enter (y/n) y
+Enter course size (no. of students)
+30
+25
+20
+35
+40
+Enter room capacities per slot (max slots = number of courses)
+50
+50
+50
+50
+50
+
+#Output
+    Warning: Slot 0 exceeds room capacity.
+Course : Exam Slot
+Course 0 -> Slot 0
+Course 1 -> Slot 1
+Course 2 -> Slot 0
+Course 3 -> Slot 1
+Course 4 -> Slot 0
+Total slots used: 2
+
+    
