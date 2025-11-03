@@ -103,3 +103,35 @@ public class ReliefFractionalKnapsack {
     }
 }
 
+#input
+
+    Enter boat capacity W in kg 50
+Enter number of different item types n 4
+Item 1 name: Medical Kits
+Item 1 weight (kg): 10
+Item 1 utility value: 500
+Is item 1 divisible? (y/n): n
+Item 2 name: Food Packets
+Item 2 weight (kg): 20
+Item 2 utility value: 300
+Is item 2 divisible? (y/n): y
+Item 3 name: Water Bottles
+Item 3 weight (kg): 15
+Item 3 utility value: 200
+Is item 3 divisible? (y/n): y
+Item 4 name: Blankets
+Item 4 weight (kg): 25
+Item 4 utility value: 150
+Is item 4 divisible? (y/n): n
+
+    #Output
+    boat capacity: 50.00 kg
+selected items (name : takenWeight kg -> gainedUtility)
+Medical Kits : 10.00 kg -> 500.00 utility (whole item)
+Food Packets : 20.00 kg -> 300.00 utility (100.0% of item)
+Water Bottles : 15.00 kg -> 200.00 utility (100.0% of item)
+Blankets : SKIPPED (needs 25.00 kg, only 5.00 kg left)
+total utility value loaded: 1000.00
+unused capacity remaining: 5.00 kg
+
+    
