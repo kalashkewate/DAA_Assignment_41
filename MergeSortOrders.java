@@ -79,3 +79,29 @@ public class MergeSortOrders {
         }
     }
 }
+
+#Output
+
+    Before Sorting:
+Order_0 - 823456
+Order_1 - 192837
+Order_2 - 987654
+Order_3 - 456789
+Order_4 - 123456
+Order_5 - 678901
+Order_6 - 234567
+Order_7 - 345678
+Order_8 - 789012
+Order_9 - 567890
+
+After Sorting by Timestamp:
+Order_4 - 123456
+Order_1 - 192837
+Order_6 - 234567
+Order_7 - 345678
+Order_3 - 456789
+Order_9 - 567890
+Order_5 - 678901
+Order_0 - 823456
+Order_8 - 789012
+Order_2 - 987654
