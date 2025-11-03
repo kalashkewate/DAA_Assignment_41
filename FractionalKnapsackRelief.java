@@ -64,3 +64,13 @@ public class FractionalKnapsackRelief {
         System.out.println("\n🚤 Maximum total utility value carried: " + maxValue);
     }
 }
+
+#Output
+
+    Selected items for transport:
+- Medical Kits (100%) | value = 500.0
+- Baby Formula (100%) | value = 180.0
+- Food Packets (60.0%) | value = 180.0
+
+🚤 Maximum total utility value carried: 860.0
+
