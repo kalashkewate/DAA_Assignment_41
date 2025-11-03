@@ -92,3 +92,16 @@ public class SwiftShipTSP {
         System.out.println("End");
     }
 }
+
+#Input
+    Enter number of cities: 4
+Enter cost matrix (NxN):
+0 10 15 20
+10 0 35 25
+15 35 0 30
+20 25 30 0
+
+    #Output
+    Minimum cost: 80
+Optimal route:
+0 -> 1 -> 3 -> 2 -> 0 -> End
