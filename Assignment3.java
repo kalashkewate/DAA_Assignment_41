@@ -21,7 +21,6 @@ class Item {
 public class FractionalKnapsackRelief {
 
     public static double maximizeUtility(List<Item> items, double capacity) {
-        // Sort items by value-to-weight ratio (descending)
         items.sort((a, b) -> Double.compare(b.ratio(), a.ratio()));
 
         double totalValue = 0.0;
@@ -32,12 +31,11 @@ public class FractionalKnapsackRelief {
             if (remainingCapacity <= 0) break;
 
             if (item.weight <= remainingCapacity) {
-                // Take full item
                 totalValue += item.value;
                 remainingCapacity -= item.weight;
                 System.out.println("- " + item.name + " (100%) | value = " + item.value);
             } else if (item.divisible) {
-                // Take fraction of the item
+
                 double fraction = remainingCapacity / item.weight;
                 double valueTaken = item.value * fraction;
                 totalValue += valueTaken;
@@ -50,7 +48,6 @@ public class FractionalKnapsackRelief {
     }
 
     public static void main(String[] args) {
-        // Sample data (name, weight, value, divisible)
         List<Item> items = new ArrayList<>();
         items.add(new Item("Medical Kits", 10, 500, false));
         items.add(new Item("Food Packets", 20, 300, true));
@@ -58,10 +55,10 @@ public class FractionalKnapsackRelief {
         items.add(new Item("Blankets", 25, 150, false));
         items.add(new Item("Baby Formula", 5, 180, false));
 
-        double boatCapacity = 40; // Max weight boat can carry
+        double boatCapacity = 40; 
 
         double maxValue = maximizeUtility(items, boatCapacity);
-        System.out.println("\n🚤 Maximum total utility value carried: " + maxValue);
+        System.out.println("\n Maximum total utility value carried: " + maxValue);
     }
 }
 
@@ -73,4 +70,5 @@ public class FractionalKnapsackRelief {
 - Food Packets (60.0%) | value = 180.0
 
 🚤 Maximum total utility value carried: 860.0
+
 
