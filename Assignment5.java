@@ -1,6 +1,5 @@
 import java.util.*;
 public class SwiftCargo {
-    // edge  u -> v with cost or time
     static class Edge {
         int from, to;
         double cost;
@@ -11,9 +10,9 @@ public class SwiftCargo {
         }
     }
     static class MultistageGraph {
-        int stages;                   // number of stages
-        List<List<Integer>> stageNodes; // nodes per stage
-        Map<Integer, List<Edge>> adj;  // adjacency list: node -> outgoing edges
+        int stages;                   
+        List<List<Integer>> stageNodes; 
+        Map<Integer, List<Edge>> adj;  
         MultistageGraph(int stages) {
             this.stages = stages;
             stageNodes = new ArrayList<>();
@@ -41,7 +40,6 @@ public class SwiftCargo {
             return updated;
         }
     }
-    // result- minimal cost and path
     static class Result {
         double cost;
         List<Integer> path;
@@ -54,7 +52,6 @@ public class SwiftCargo {
         Map<Integer, Double> dp = new HashMap<>();
         Map<Integer, Integer> parent = new HashMap<>();
         dp.put(source, 0.0);
-        // lopp through stage by stage
         for (int stage = 0; stage < g.stages; stage++) {
             Map<Integer, Double> nextDp = new HashMap<>();
             for (int u : g.stageNodes.get(stage)) {
@@ -63,7 +60,7 @@ public class SwiftCargo {
                 List<Edge> edges = g.adj.get(u);
                 if (edges == null) continue;
                 for (Edge e : edges) {
-                    // only allow edges going to nodes in later stages
+                   
                     int nextStage = -1;
                     for (int s = stage + 1; s < g.stages; s++) {
                         if (g.stageNodes.get(s).contains(e.to)) {
@@ -71,7 +68,7 @@ public class SwiftCargo {
                             break;
                         }
                     }
-                    if (nextStage == -1) continue; // skip edges to same or previous stage
+                    if (nextStage == -1) continue;
                     double newCost = costU + e.cost;
                     if (!nextDp.containsKey(e.to) || newCost < nextDp.get(e.to)) {
                         nextDp.put(e.to, newCost);
@@ -79,7 +76,7 @@ public class SwiftCargo {
                     }
                 }
             }
-            dp.putAll(nextDp); // merge reachable nodes for next iteration
+            dp.putAll(nextDp); 
         }
         List<Integer> path = new ArrayList<>();
         if (!dp.containsKey(destination)) return new Result(Double.POSITIVE_INFINITY, path);
@@ -143,10 +140,10 @@ public class SwiftCargo {
 #Output
     optimal cost: 4.0
 optimal path: [0, 3, 4]
-
-after traffic update the Optimal cost: 7.5
+after traffic update the Optimal cost: 9.0
 after traffic update the Optimal path: [0, 2, 4]
+Request 1 - cost: 9.0, path: [0, 2, 4]
+Request 2 - cost: 6.0, path: [1, 3, 5]
 
-Request 1 - cost: 7.5, path: [0, 2, 4]
-Request 2 - cost: 5.5, path: [1, 3, 5]
+
 
