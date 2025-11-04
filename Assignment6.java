@@ -6,7 +6,7 @@ public class ReliefFractionalKnapsack {
         String name;
         double weight;
         double value;
-        boolean divisible; // if true means can take fraction
+        boolean divisible; 
 
         Item(String name, double weight, double value, boolean divisible) {
             if (weight <= 0) throw new IllegalArgumentException("Weight must be > 0");
@@ -25,7 +25,7 @@ public class ReliefFractionalKnapsack {
             System.out.println("Boat capacity should be > 0.");
             return 0.0;
         }
-        // Sort by value by weight in descending order
+       
         items.sort((a, b) -> Double.compare(b.density(), a.density()));
 
         double remaining = capacityKg;
@@ -37,7 +37,7 @@ public class ReliefFractionalKnapsack {
         for (Item it : items) {
             if (remaining <= 0) break;
             if (it.divisible) {
-                // take fraction part if needed
+                
                 double takeWeight = Math.min(it.weight, remaining);
                 double gainedValue = it.density() * takeWeight;
                 totalValue += gainedValue;
@@ -47,7 +47,7 @@ public class ReliefFractionalKnapsack {
                 System.out.printf("%s : %.2f kg -> %.2f utility (%.1f%% of item)%n",
                         it.name, takeWeight, gainedValue, percent);
             } else {
-                // indivisible: only take whole if it is < capacity
+               
                 if (it.weight <= remaining) {
                     totalValue += it.value;
                     remaining -= it.weight;
@@ -103,35 +103,26 @@ public class ReliefFractionalKnapsack {
     }
 }
 
-#input
-
-    Enter boat capacity W in kg 50
-Enter number of different item types n 4
-Item 1 name: Medical Kits
-Item 1 weight (kg): 10
-Item 1 utility value: 500
-Is item 1 divisible? (y/n): n
-Item 2 name: Food Packets
-Item 2 weight (kg): 20
-Item 2 utility value: 300
+#Output
+    Enter boat capacity W in kg 6
+Enter number of different item types n 3
+Item 1 name: er
+Item 1 weight (kg): 1
+Item 1 utility value: 5
+Is item 1 divisible? (y/n): y
+Item 2 name: yu
+Item 2 weight (kg): 5
+Item 2 utility value: 9
 Is item 2 divisible? (y/n): y
-Item 3 name: Water Bottles
-Item 3 weight (kg): 15
-Item 3 utility value: 200
-Is item 3 divisible? (y/n): y
-Item 4 name: Blankets
-Item 4 weight (kg): 25
-Item 4 utility value: 150
-Is item 4 divisible? (y/n): n
+Item 3 name: th
+Item 3 weight (kg): 9
+Item 3 utility value: 1
+Is item 3 divisible? (y/n): n
 
-    #Output
-    boat capacity: 50.00 kg
+boat capacity: 6.00 kg
 selected items (name : takenWeight kg -> gainedUtility)
-Medical Kits : 10.00 kg -> 500.00 utility (whole item)
-Food Packets : 20.00 kg -> 300.00 utility (100.0% of item)
-Water Bottles : 15.00 kg -> 200.00 utility (100.0% of item)
-Blankets : SKIPPED (needs 25.00 kg, only 5.00 kg left)
-total utility value loaded: 1000.00
-unused capacity remaining: 5.00 kg
+er : 1.00 kg -> 5.00 utility (100.0% of item)
+yu : 5.00 kg -> 9.00 utility (100.0% of item)
+total utility value loaded: 14.00
+unused capacity remaining: 0.00 kg
 
-    
