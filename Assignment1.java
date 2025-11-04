@@ -12,18 +12,16 @@ class Order {
 
 public class MergeSortOrders {
 
-    // Merge Sort Function
     public static void mergeSort(Order[] orders, int left, int right) {
         if (left < right) {
             int mid = (left + right) / 2;
 
-            mergeSort(orders, left, mid);        // Sort left half
-            mergeSort(orders, mid + 1, right);   // Sort right half
-            merge(orders, left, mid, right);     // Merge halves
+            mergeSort(orders, left, mid);       
+            mergeSort(orders, mid + 1, right);  
+            merge(orders, left, mid, right);     
         }
     }
 
-    // Merge two sorted subarrays
     private static void merge(Order[] orders, int left, int mid, int right) {
         int n1 = mid - left + 1;
         int n2 = right - mid;
@@ -55,12 +53,10 @@ public class MergeSortOrders {
         }
     }
 
-    // Driver Code
     public static void main(String[] args) {
-        int n = 10; // Can go up to 1,000,000 for testing
+        int n = 10; 
         Order[] orders = new Order[n];
 
-        // Generate random timestamps for testing
         Random rand = new Random();
         for (int i = 0; i < n; i++) {
             orders[i] = new Order(rand.nextInt(1000000), "Order_" + i);
@@ -105,3 +101,4 @@ Order_5 - 678901
 Order_0 - 823456
 Order_8 - 789012
 Order_2 - 987654
+
