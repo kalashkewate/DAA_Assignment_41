@@ -1,10 +1,10 @@
 import java.util.*;
 public class SwiftShipTSP {
     static class Node implements Comparable<Node> {
-        int level;          // how many cities are visited
-        int pathCost;       // current path cost
-        int bound;          // lower bound on path cost
-        List<Integer> path; // path so far
+        int level;         
+        int pathCost;       
+        int bound;          
+        List<Integer> path; 
         Node(int level, int pathCost, int bound, List<Integer> path) {
             this.level = level;
             this.pathCost = pathCost;
@@ -13,14 +13,13 @@ public class SwiftShipTSP {
         }
         @Override
         public int compareTo(Node other) {
-            return Integer.compare(this.bound, other.bound); // min-heap by bound
+            return Integer.compare(this.bound, other.bound); 
         }
     }
     static int calculateBound(Node node, int[][] costMatrix, int N) {
         int bound = node.pathCost;
         boolean[] visited = new boolean[N];
         for (int city : node.path) visited[city] = true;
-        // add minimum outgoing edge cost for unvisited cities
         for (int i = 0; i < N; i++) {
             if (!visited[i]) {
                 int minEdge = Integer.MAX_VALUE;
@@ -44,21 +43,21 @@ public class SwiftShipTSP {
         pq.add(root);
         while (!pq.isEmpty()) {
             Node node = pq.poll();
-            if (node.bound >= minCost) continue; // prune
+            if (node.bound >= minCost) continue; 
             if (node.level == N - 1) {
-                // complete the tour
+             
                 int last = node.path.get(node.path.size() - 1);
                 if (costMatrix[last][0] > 0) {
                     int totalCost = node.pathCost + costMatrix[last][0];
                     if (totalCost < minCost) {
                         minCost = totalCost;
                         bestPath = new ArrayList<>(node.path);
-                        bestPath.add(0); // return to start
+                        bestPath.add(0); 
                     }
                 }
                 continue;
             }
-            // expand the node
+          
             int lastCity = node.path.get(node.path.size() - 1);
             for (int nextCity = 0; nextCity < N; nextCity++) {
                 if (!node.path.contains(nextCity) && costMatrix[lastCity][nextCity] > 0) {
@@ -67,7 +66,7 @@ public class SwiftShipTSP {
                     int newCost = node.pathCost + costMatrix[lastCity][nextCity];
                     Node child = new Node(node.level + 1, newCost, 0, newPath);
                     child.bound = calculateBound(child, costMatrix, N);
-                    if (child.bound < minCost) pq.add(child); // only promising nodes
+                    if (child.bound < minCost) pq.add(child); 
                 }
             }
         }
@@ -93,15 +92,13 @@ public class SwiftShipTSP {
     }
 }
 
-#Input
+#Output
     Enter number of cities: 4
 Enter cost matrix (NxN):
 0 10 15 20
-10 0 35 25
+10 0 25 35
 15 35 0 30
 20 25 30 0
-
-    #Output
-    Minimum cost: 80
+Minimum cost: 80
 Optimal route:
-0 -> 1 -> 3 -> 2 -> 0 -> End
+0 -> 2 -> 3 -> 1 -> 0 -> End
