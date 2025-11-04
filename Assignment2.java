@@ -2,7 +2,7 @@ class Movie {
     String title;
     double imdbRating;
     int releaseYear;
-    int watchTimePopularity; // Number of views or watch minutes
+    int watchTimePopularity;
 
     Movie(String title, double rating, int year, int popularity) {
         this.title = title;
@@ -14,7 +14,6 @@ class Movie {
 
 public class QuickSortMovies {
 
-    // QuickSort Function
     public static void quickSort(Movie[] movies, int low, int high, String parameter) {
         if (low < high) {
             int pivotIndex = partition(movies, low, high, parameter);
@@ -23,11 +22,10 @@ public class QuickSortMovies {
         }
     }
 
-    // Partition Function
     private static int partition(Movie[] movies, int low, int high, String parameter) {
-        Movie pivot = movies[(low + high) / 2]; // using middle element as pivot
+        Movie pivot = movies[(low + high) / 2]; 
         while (low <= high) {
-            while (compare(movies[low], pivot, parameter) > 0) low++;   // Descending order
+            while (compare(movies[low], pivot, parameter) > 0) low++;   
             while (compare(movies[high], pivot, parameter) < 0) high--;
             if (low <= high) {
                 swap(movies, low, high);
@@ -38,7 +36,7 @@ public class QuickSortMovies {
         return low;
     }
 
-    // Comparison based on selected parameter
+
     private static int compare(Movie m1, Movie m2, String parameter) {
         switch (parameter) {
             case "rating":
@@ -52,14 +50,12 @@ public class QuickSortMovies {
         }
     }
 
-    // Swap function
     private static void swap(Movie[] movies, int i, int j) {
         Movie temp = movies[i];
         movies[i] = movies[j];
         movies[j] = temp;
     }
 
-    // Driver Code
     public static void main(String[] args) {
         Movie[] movies = {
                 new Movie("Inception", 8.8, 2010, 5000000),
@@ -69,7 +65,7 @@ public class QuickSortMovies {
                 new Movie("Oppenheimer", 8.7, 2023, 6000000)
         };
 
-        String parameter = "rating"; // can be "rating", "year", or "popularity"
+        String parameter = "rating"; 
         quickSort(movies, 0, movies.length - 1, parameter);
 
         System.out.println("Sorted by " + parameter.toUpperCase() + ":");
@@ -87,4 +83,5 @@ Inception | 8.8 | 2010 | 5000000
 Oppenheimer | 8.7 | 2023 | 6000000
 Interstellar | 8.6 | 2014 | 7000000
 Avengers: Endgame | 8.4 | 2019 | 9000000
+
 
